@@ -39,13 +39,13 @@ try:
 except URLError as e:
   streamlit.error();
 
-streamlit.stop()
+#streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_data_rows = get_fruit_load_list()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
-fruit_choice = streamlit.text_input('What fruit would you like add?','Kiwi')
+fruit_choice = streamlit.text_input('What fruit would you like add?')
 my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('"+fruit_choice+"') ")
 streamlit.text('Thanks for adding '+fruit_choice)
 
