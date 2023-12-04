@@ -39,4 +39,5 @@ my_data_rows = my_cur.fetchall()
 streamlit.dataframe(my_data_rows)
 if my_data_rows: 
   streamlit.text('Thanks for adding jackfruit')
-else streamlit.text('NO adding jackfruit')
+else: 
+  streamlit.text('NO adding jackfruit')
