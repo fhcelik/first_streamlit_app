@@ -31,3 +31,12 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
+
+fruit_choice = streamlit.text_input('What fruit would you like add?','Kiwi')
+my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('"+fruit_choice+"') ")
+my_cur.execute("SELECT * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST where fruit_name="+fruit_choice)
+my_data_rows = my_cur.fetchall()
+streamlit.dataframe(my_data_rows)
+if my_data_rows: 
+  streamlit.text('Thanks for adding jackfruit')
+else streamlit.text('NO adding jackfruit')
